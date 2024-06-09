@@ -45,6 +45,16 @@
             background-position: center bottom;
         }
 
+        #gameIntro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #game-title {
+            margin-bottom: 20px;
+            width: 400px;
+        }
 
         /* Intro Block */
         #introBlock {
@@ -81,17 +91,18 @@
 
         /* Buttons */
         #introButton {
+            width: 200px;
             padding: 12px 30px;
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 390px;
+            font-size: 30px;
+            font-weight: 900;
+            margin-bottom: 300px;
             cursor: pointer;
             background-color: #ffc0cb;
             /* Light pink background */
             color: #c7437b;
             /* Light purple text */
             border-radius: 10px;
-            border: 2px solid;
+            border: 3px solid;
             /* Rounded corners */
             transition: all 0.3s ease;
         }
@@ -171,7 +182,10 @@
         <button id="startButton">Start Game</button>
     </div>
     <div id="backgroundWrapper">
-        <button id="introButton">點擊上學</button>
+        <div id="gameIntro">
+            <img id="game-title" src="img\title.png">
+            <button id="introButton">點擊上學</button>
+        </div>
         <div id="gameContainer">
             <div id="messages"></div>
             <form id="messageForm">
@@ -179,7 +193,13 @@
             </form>
         </div>
     </div>
-
+    <audio id="introBGM" autoplay>
+        <source src="game_bgm.mp3">
+    </audio>
+    <audio id="gameBGM" loop>
+        <source src="game.mp3">
+    </audio>
+    
 </body>
 <script>
     var conversationHistory = [];
@@ -307,6 +327,10 @@
                 document.getElementById('backgroundWrapper').style.backgroundImage = "url('./img/711.jpeg')";
             } else if (scene.includes("公園)")) {
                 document.getElementById('backgroundWrapper').style.backgroundImage = "url('./img/park.jpeg')";
+            } else if (scene.includes("電影院)")) {
+                document.getElementById('backgroundWrapper').style.backgroundImage = "url('./img/movie.jpeg')";
+            } else if (scene.includes("咖啡廳)")) {
+                document.getElementById('backgroundWrapper').style.backgroundImage = "url('./img/coffee.jpeg')";
             }
         }
     }
@@ -323,7 +347,7 @@
 
     document.getElementById('introButton').addEventListener('click', function () {
         document.getElementById('introBlock').style.display = 'block';
-        this.style.display = 'none'; // Hide the intro button
+        document.getElementById('gameIntro').style.display = 'none'; // Hide the intro button
         document.getElementById('startButton').style.display = 'block'; // Show the start button
     });
 
@@ -333,6 +357,8 @@
         document.getElementById('introBlock').style.display = 'none'; // Show the game container
         document.getElementById('gameContainer').style.display = 'inline';
         document.getElementById('introButton').style.display = 'none'; // Hide the start button
+        document.getElementById('introBGM').pause();
+        document.getElementById('gameBGM').play();
 
         conversationHistory.push({
             "role": 'user',
@@ -414,10 +440,10 @@
                         一切都是夢你還沒睡醒嗎"""
 
                         請根據腳本中的對話，根據"""開場"""到"""與三位女主角互動"""最後到"""結局"""進行，開始一個文字冒險遊戲，每一次的對話，都需要呈現以下格式與資訊：
-                        (場景：目前故事的背景為何)
+                        (場景：目前故事的背景為何，場景前不要有其他敘述)
                         在每一次的對話中，你都會根據腳本給我可以選擇的動作，根據我選擇的動作繼續接下來的劇情，整體劇情會圍繞腳本發展。
 
-                        根據我的選擇進行故事就好，不要幫我做出選擇`
+                        根據我的選擇進行故事就好，不要幫我做出選擇，僅需要給出選項部不需要事先的描述`
             }]
         })
         fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + apiKey, {
