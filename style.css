@@ -1,0 +1,164 @@
+body {
+    color: #6d3f3f;
+    /* Light pink text */
+    font-family: 'Noto Serif JP', serif;
+    /* Japanese font for a softer look */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* background: url('./img/bg_school.jpg') no-repeat center center fixed; */
+    /* Replace with your school background image */
+    background: #000000;
+    /* Ensure background fills the screen */
+}
+
+/* Background Wrapper (Optional) */
+#backgroundWrapper {
+    width: 80vw;
+    /* Use viewport width units */
+    max-width: 800px;
+    /* Maximum width remains 800px */
+    height: 80vw;
+    /* Height is set to be the same in viewport width units, approximating the width */
+    max-height: 800px;
+    /* Maximum height to match the maximum width */
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-image: url('./img/cover.jpeg');
+    /* Replace with your image path */
+    background-size: contain;
+    /* Ensures the image is fully visible without stretching */
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+#gameIntro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-title {
+    margin-bottom: 20px;
+    width: 400px;
+}
+
+/* Intro Block */
+#introBlock {
+    width: 80%;
+    max-width: 600px;
+    background: rgba(255, 250, 250, 1);
+    /* Light pink background with transparency */
+    padding: 20px;
+    box-sizing: border-box;
+    border: 2px solid #ffc0cb;
+    border-radius: 10px;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    /* Subtle shadow */
+}
+
+#introBlock h2 {
+    color: #c7437b;
+    /* Light purple heading */
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#introBlock p {
+    line-height: 1.5;
+    /* Adjust line spacing for better readability */
+}
+
+/* Buttons */
+#introButton {
+    width: 200px;
+    padding: 12px 30px;
+    font-size: 30px;
+    font-weight: 900;
+    margin-bottom: 300px;
+    cursor: pointer;
+    background-color: #ffc0cb;
+    /* Light pink background */
+    color: #c7437b;
+    /* Light purple text */
+    border-radius: 10px;
+    border: 3px solid;
+    /* Rounded corners */
+    transition: all 0.3s ease;
+}
+
+#startButton {
+    padding: 12px 30px;
+    font-size: 22px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: #ffc0cb;
+    /* Light pink background */
+    color: #c7437b;
+    /* Light purple text */
+    border-radius: 10px;
+    border: 2px solid;
+    /* Rounded corners */
+    transition: all 0.3s ease;
+}
+
+#startButton:hover,
+#introButton:hover {
+    background-color: #f080ac;
+    /* Pinker background on hover */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    /* Slightly stronger shadow */
+    transform: scale(1.03);
+    /* Slightly enlarge on hover */
+}
+
+/* Game Container */
+#gameContainer {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    background: rgba(255, 250, 250, 0.9);
+    display: none;
+    box-sizing: border-box;
+    border: 1px solid #fff;
+    overflow: hidden;
+}
+
+#messages {
+    height: 80%;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.message {
+    margin: 5px 0;
+}
+
+.userMessage {
+    color: rgb(0, 128, 255);
+}
+
+.botMessage {
+    color: #6d3f3f;
+}
+
+#messageInput {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: transparent;
+    border: none;
+    border-top: 1px solid #4a3131;
+    color: #c7437b;
+    font-size: 16px;
+}
